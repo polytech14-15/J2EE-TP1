@@ -78,7 +78,7 @@
 <div class="control-group">
   <label class="control-label" for="id">Numéro</label>
   <div class="controls">
-    <input id="id" name="id" placeholder="" class="input-medium" required="" type="text" value="${stage.id}">
+    <input id="id" name="id" placeholder="" class="input-medium" required="" type="text" value="${stage.id}" required pattern="\d+">
   </div>
 </div>
 
@@ -86,7 +86,7 @@
 <div class="control-group">
   <label class="control-label" for="libelle">Libellé</label>
   <div class="controls">
-    <input id="libelle" name="libelle" placeholder="" class="input-medium" required="" type="text" value="${stage.libelle}">
+    <input id="libelle" name="libelle" placeholder="" class="input-medium" type="text" value="${stage.libelle}" required>
   </div>
 </div>
 
@@ -94,7 +94,7 @@
 <div class="control-group">
   <label class="control-label" for="datedebut">Date de début</label>
   <div class="controls">
-    <input id="datedebut" name="datedebut" placeholder="JJ/MM/AAAA" class="input-medium" required="" type="text" value="${stage.datedebut}">
+    <input id="datedebut" name="datedebut" placeholder="JJ/MM/AAAA" class="input-medium" type="text" value="${stage.datedebut}" required pattern="\d{1,2}/\d{1,2}/\d{4}">
   </div>
 </div>
 
@@ -102,7 +102,7 @@
 <div class="control-group">
   <label class="control-label" for="datefin">Date de fin</label>
   <div class="controls">
-    <input id="datefin" name="datefin" placeholder="JJ/MM/AAAA" class="input-medium" required="" type="text" value="${stage.datefin}">
+    <input id="datefin" name="datefin" placeholder="JJ/MM/AAAA" class="input-medium" type="text" value="${stage.datefin}" required pattern="\d{1,2}/\d{1,2}/\d{4}">
   </div>
 </div>
 
@@ -110,7 +110,7 @@
 <div class="control-group">
   <label class="control-label" for="nbplaces">Nombre de places</label>
   <div class="controls">
-    <input id="nbplaces" name="nbplaces" placeholder="0" class="input-medium" type="text" value="${stage.nbplaces}">
+    <input id="nbplaces" name="nbplaces" placeholder="0" class="input-medium" type="text" value="${stage.nbplaces}" required pattern="\d+">
   </div>
 </div>
 
@@ -118,7 +118,7 @@
 <div class="control-group">
   <label class="control-label" for="nbinscrits">Nombre d'inscrits</label>
   <div class="controls">
-    <input id="nbinscrits" name="nbinscrits" placeholder="0" class="input-medium" type="text"value="${stage.nbinscrits}">
+    <input id="nbinscrits" name="nbinscrits" placeholder="0" class="input-medium" type="text"value="${stage.nbinscrits}" required pattern="\d+">
   </div>
 </div>
 
