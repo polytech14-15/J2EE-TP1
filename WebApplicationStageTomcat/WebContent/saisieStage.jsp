@@ -6,6 +6,12 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <title>Ajout d'un stage </title>
 
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+<link rel="stylesheet" href="static/css/all.css">
+	
+<script src="//code.jquery.com/jquery-1.11.2.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+
 <script language=javascript>
   function verif()
   {
@@ -28,49 +34,107 @@
   </script>
 </head>
 <body  onLoad="Chargement();">
-<h1>formulaire d'ajout d'un stage</h1>
-  <br>
+<nav class="navbar navbar-default">
+  <div class="container-fluid">
+    <!-- Brand and toggle get grouped for better mobile display -->
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
+        <span class="sr-only">Toggle navigation</span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <a class="navbar-brand" href="#">Gestion des Stages  HIGH TECH</a>
+    </div>
+
+    <!-- Collect the nav links, forms, and other content for toggling -->
+    <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+      <ul class="nav navbar-nav">
+      	<li><a href="index.jsp"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Accueil </a></li>
+        <li class="active"><a href="Controleur?action=saisieStage">Saisie d'un stage <span class="sr-only">(current)</span></a></li>
+        <li><a href="Controleur?action=afficheStage">Affichage liste des stages</a></li>
+<!--          <li><a href="Controleur?action=rechercheStage">Recherche d'un stage</a></li> -->
+      </ul>
+    </div><!-- /.navbar-collapse -->
+  </div><!-- /.container-fluid -->
+</nav>
+
+
+<section class="content"></section>
+<div class="page-header">
+	<h3>Formulaire d'ajout d'un stage</h3>
+</div>
   
-  <input type ="hidden" name="uneErreur"  value="${MesErreurs}"  id ="id_erreur" >
-  <form method="post" action="Controleur" onsubmit="return verif();">
-  <input type="hidden" name="type" value="ajout"  id="type"/>
-  <input type="hidden" name="action" value="ajoutStage" />
-  <table>
-    <!-- input fields -->
-    <tr>
-      <td>Numéro</td>
-      <td><input type="text" name="id" value="${stage.id}" id="id"/></td>
-    </tr>
-    <tr>
-      <td>Libellé</td>
-      <td><input type="text" name="libelle" value="${stage.libelle}" id="libelle"/></td>
-    </tr>
-    <tr>
-    <td>Date de début du stage</td>
-     <td><input type="text" name="datedebut" value="${stage.datedebut}" id="datedebut"/></td>
-     </tr>
-      <tr>
-      <td>Date de fin de stage</td>
-     <td><input type="text" name="datefin" value="${stage.datefin}" id="datefin"/></td>
-    </tr>
-    
-    <tr>
-      <td>Nombre de places </td>
-      <td><input type="text" name="nbplaces" value="${stage.nbplaces}" id="nbplaces"/></td>
-    </tr>
-    <tr>
-      <td>Nombre d'inscrits </td>
-      <td><input type="text" name="nbinscrits" value="${stage.nbinscrits}" id="nbinscrits"/></td>
-    </tr>
-    <!-- Boutons Ajouter/Reset -->
-    <tr>
-      <td colspan="2">
-        <input type="submit" name="ajouter" value="Ajouter"/>
-        &nbsp;&nbsp;
-        <input type="reset" name="reset" value="Reset" />
-      </td>
-    </tr>
-  </table>
-  </form>
+  
+  
+ <input type ="hidden" name="uneErreur"  value="${MesErreurs}"  id ="id_erreur" >
+ <form method="post" action="Controleur" onsubmit="return verif();" class="form-horizontal formStage">
+ <fieldset>
+ <input type="hidden" name="type" value="ajout"  id="type"/>
+ <input type="hidden" name="action" value="ajoutStage" />
+
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="id">Numéro</label>
+  <div class="controls">
+    <input id="id" name="id" placeholder="" class="input-medium" required="" type="text" value="${stage.id}">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="libelle">Libellé</label>
+  <div class="controls">
+    <input id="libelle" name="libelle" placeholder="" class="input-medium" required="" type="text" value="${stage.libelle}">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="datedebut">Date de début</label>
+  <div class="controls">
+    <input id="datedebut" name="datedebut" placeholder="JJ/MM/AAAA" class="input-medium" required="" type="text" value="${stage.datedebut}">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="datefin">Date de fin</label>
+  <div class="controls">
+    <input id="datefin" name="datefin" placeholder="JJ/MM/AAAA" class="input-medium" required="" type="text" value="${stage.datefin}">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="nbplaces">Nombre de places</label>
+  <div class="controls">
+    <input id="nbplaces" name="nbplaces" placeholder="0" class="input-medium" type="text" value="${stage.nbplaces}">
+  </div>
+</div>
+
+<!-- Text input-->
+<div class="control-group">
+  <label class="control-label" for="nbinscrits">Nombre d'inscrits</label>
+  <div class="controls">
+    <input id="nbinscrits" name="nbinscrits" placeholder="0" class="input-medium" type="text"value="${stage.nbinscrits}">
+  </div>
+</div>
+
+<!-- Button (Double) -->
+<div class="control-group">
+  <label class="control-label" for="ajouter"></label>
+  <div class="controls">
+  	<input type="submit" name="ajouter" value="Ajouter" class="btn btn-success"/>
+	<input type="reset" name="reset" value="Reset" class="btn btn-info"/>
+  </div>
+</div>
+
+</fieldset>
+</form>
+  
+  
+<footer>All rights reserved © 2015 - Sébastien Duret & Marc-Antoine Sayn-Urpar</footer>
 </body>
 </html>

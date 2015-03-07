@@ -62,9 +62,10 @@ public class Controleur extends HttpServlet
 					unStage.setLibelle(request.getParameter("libelle"));
 					unStage.setDatedebut(conversionChaineenDate(request.getParameter("datedebut"), "yyyy/MM/dd"));
 					unStage.setDatefin(conversionChaineenDate(request.getParameter("datefin"), "yyyy/MM/dd"));
-			unStage.setNbplaces(Integer.parseInt(request.getParameter("nbplaces")));
-		unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbplaces"))).intValue());
-					unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbinscrits"))).intValue());
+					unStage.setNbplaces(Integer.parseInt(request.getParameter("nbplaces")));
+					unStage.setNbinscrits(Integer.parseInt(request.getParameter("nbinscrits")));
+//					unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbplaces"))).intValue());
+//					unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbinscrits"))).intValue());
 					unStage.insertionStage();
 					destinationPage = "/index.jsp";
 				} catch (Exception e)

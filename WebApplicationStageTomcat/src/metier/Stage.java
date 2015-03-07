@@ -16,26 +16,7 @@ public class Stage {
 	private Date datedebut;
 	private Date datefin;
 	private int nbplaces;
-	public int getNbplaces() {
-		return nbplaces;
-	}
-
-
-	public void setNbplaces(int nbplaces) {
-		this.nbplaces = nbplaces;
-	}
-
-
-	public int getNbinscrits() {
-		return nbinscrits;
-	}
-
-
-	public void setNbinscrits(int nbinscrits) {
-		this.nbinscrits = nbinscrits;
-	}
 	private int nbinscrits;
-
 	
 	public Stage(String id, String libelle, Date datedebut, Date datefin, 
 			int nbplaces, int nbinscrits) {
@@ -77,6 +58,19 @@ public class Stage {
 	public void setDatefin(Date datefin) {
 		this.datefin = datefin;
 	}
+	public int getNbplaces() {
+		return nbplaces;
+	}
+	public void setNbplaces(int nbplaces) {
+		this.nbplaces = nbplaces;
+	}
+	public int getNbinscrits() {
+		return nbinscrits;
+	}
+	public void setNbinscrits(int nbinscrits) {
+		this.nbinscrits = nbinscrits;
+	}
+
 	
 	
 	/* traitements métier */

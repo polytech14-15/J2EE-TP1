@@ -1,0 +1,27 @@
+body{
+	background-color : #E7E7E7;
+}
+
+h1, h3{
+	text-align: center;
+	color: #004080;
+}
+
+.content{
+	margin : 10px;
+}
+
+footer{
+	text-align: center;
+	margin-top: 50px;
+	font-size: 11px;
+}
+
+.tableStages{
+	margin: 0 100px;
+}
+
+.formStage{
+	width: 160px;
+	margin: 0 auto;
+}
