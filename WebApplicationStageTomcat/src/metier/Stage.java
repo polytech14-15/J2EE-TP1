@@ -18,6 +18,11 @@ public class Stage {
 	private int nbplaces;
 	private int nbinscrits;
 	
+
+	public Stage() {
+		// TODO Auto-generated constructor stub
+	}
+	
 	public Stage(String id, String libelle, Date datedebut, Date datefin, 
 			int nbplaces, int nbinscrits) {
 		this.id = id;
@@ -32,11 +37,6 @@ public class Stage {
 	public String getId() {
 		return id;
 	}
-	public Stage() {
-	
-		// TODO Auto-generated constructor stub
-	}
-	
 	public void setId(String id) {
 		this.id = id;
 	}

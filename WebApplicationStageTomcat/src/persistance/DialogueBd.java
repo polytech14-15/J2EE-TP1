@@ -31,7 +31,7 @@ public class DialogueBd {
 			cnx = Connexion.getInstance().getConnexion();
 		   Statement unstatement = cnx.createStatement();
 	        unstatement.execute(mysql);
-	        System.out.println("Je suis passé");
+	        System.out.println("Insert - Succesfull");
 	        // on ferme la connexion
 	        cnx.close();
 	      }
