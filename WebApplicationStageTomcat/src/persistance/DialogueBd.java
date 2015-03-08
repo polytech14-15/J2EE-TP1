@@ -31,7 +31,7 @@ public class DialogueBd {
 			cnx = Connexion.getInstance().getConnexion();
 		   Statement unstatement = cnx.createStatement();
 	        unstatement.execute(mysql);
-	        System.out.println("Insert - Succesfull");
+	        System.out.println("Query SQL - Succesfull");
 	        // on ferme la connexion
 	        cnx.close();
 	      }
@@ -42,7 +42,6 @@ public class DialogueBd {
 	    	   new MonException(e.getMessage());
 	       }       
 	} 
-
 	
  public static List<Object> lecture(String req )  throws  MonException
 	  {    

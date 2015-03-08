@@ -76,7 +76,7 @@
 			<td>
 				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
 				&nbsp;&nbsp;&nbsp;&nbsp;
-				<span class="glyphicon glyphicon-remove" aria-hidden="true"></span>
+				<a href="Controleur?action=supprimerStage&id=${item.id}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
 			</td>
 
 		</tr>

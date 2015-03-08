@@ -75,28 +75,34 @@ public class Stage {
 	
 	/* traitements métier */
 	
-	public  void insertionStage ( )   throws MonException 
-	{   
-		
-		try 
-	      { 
+	public  void insertionStage ( ) throws MonException {   
+		try { 
 		    String mysql="";
 			DateFormat dateFormatpers = new SimpleDateFormat("yyyy-MM-dd");
 		    String dd = dateFormatpers.format(this.getDatedebut());
 			String df = dateFormatpers.format(this.getDatefin());
 
-			
-		mysql = "INSERT INTO stages (id, libelle, datedebut ,";
-		mysql = mysql + " datefin, nbplaces, nbinscrits) ";
-		mysql = mysql + " VALUES ( \'" + this.getId() + "\', \'" + this.getLibelle() + "\', ";
-		mysql = mysql + "\' " + dd + "\', " + "\' " + df + "\', ";
-		mysql = mysql + this.getNbplaces() + ", " + this.getNbinscrits() + " )";
-		DialogueBd.insertionBD(mysql);
-	      }
-	       catch(MonException  e)
-	      {    throw e;
-	       }       
+				
+			mysql = "INSERT INTO stages (id, libelle, datedebut ,";
+			mysql = mysql + " datefin, nbplaces, nbinscrits) ";
+			mysql = mysql + " VALUES ( \'" + this.getId() + "\', \'" + this.getLibelle() + "\', ";
+			mysql = mysql + "\' " + dd + "\', " + "\' " + df + "\', ";
+			mysql = mysql + this.getNbplaces() + ", " + this.getNbinscrits() + " )";
+			DialogueBd.insertionBD(mysql);
+		} catch(MonException  e) {
+			throw e;
+		}       
 	} 
+	
+	public void suppressionStage() throws MonException{
+		try {
+			String mysql = "DELETE FROM stages WHERE id=" + this.getId();
+			DialogueBd.insertionBD(mysql);
+		} catch (MonException  e){
+			throw e;
+		}
+		
+	}
 	
 	public List<Stage> rechercheLesStages( ) throws MonException, ParseException
 	{
