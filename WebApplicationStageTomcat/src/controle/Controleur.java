@@ -3,6 +3,7 @@ package controle;
 import java.io.IOException;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import java.util.Locale;
 
 import javax.servlet.RequestDispatcher;
 import javax.servlet.ServletException;
@@ -10,6 +11,7 @@ import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
 import java.util.Date;
 
 import meserreurs.MonException;
@@ -26,6 +28,7 @@ public class Controleur extends HttpServlet
 	private static final String CHERCHER_STAGE = "chercheStage";
 	private static final String AJOUT_STAGE = "ajoutStage";
 	private static final String MODIFIER_STAGE = "modifierStage";
+	private static final String EDITER_STAGE = "editerStage";
 	private static final String SUPPRIMER_STAGE = "supprimerStage";
 	private static final String ERROR_PAGE = null;
 
@@ -34,8 +37,9 @@ public class Controleur extends HttpServlet
 		public Date conversionChaineenDate(String unedate, String unformat) throws Exception{
 			Date datesortie;
 			// on définit un format de sortie
-			SimpleDateFormat defFormat = new SimpleDateFormat(unformat);
+			SimpleDateFormat defFormat = new SimpleDateFormat(unformat,Locale.FRANCE);
 			datesortie = defFormat.parse(unedate);
+			
 			return datesortie;
 		}
 
@@ -54,8 +58,8 @@ public class Controleur extends HttpServlet
 					Stage unStage = new Stage();
 					unStage.setId(request.getParameter("id"));
 					unStage.setLibelle(request.getParameter("libelle"));
-					unStage.setDatedebut(conversionChaineenDate(request.getParameter("datedebut"), "yyyy/MM/dd"));
-					unStage.setDatefin(conversionChaineenDate(request.getParameter("datefin"), "yyyy/MM/dd"));
+					unStage.setDatedebut(conversionChaineenDate(request.getParameter("datedebut"), "dd/MM/yyyy"));
+					unStage.setDatefin(conversionChaineenDate(request.getParameter("datefin"), "dd/MM/yyyy"));
 					unStage.setNbplaces(Integer.parseInt(request.getParameter("nbplaces")));
 					unStage.setNbinscrits(Integer.parseInt(request.getParameter("nbinscrits")));
 //					unStage.setNbinscrits(Integer.valueOf((request.getParameter("nbplaces"))).intValue());
@@ -78,7 +82,38 @@ public class Controleur extends HttpServlet
 					destinationPage = "/Erreur.jsp";
 				}
 			} else if (MODIFIER_STAGE.equals(actionName)){
-				
+				try{
+					Stage unStage = new Stage();
+					listeStages = unStage.rechercheLesStages();
+					String id = request.getParameter("id");
+					// Get the stage to delete
+					for (Stage s : listeStages){
+						if (s.getId().equals(id)){
+							unStage = s;
+							break;
+						}
+					}
+					request.setAttribute("stage", unStage);
+					destinationPage = "/editionStage.jsp";
+				} catch (MonException e){
+					request.setAttribute("MesErreurs", e.getMessage());
+					destinationPage = "/Erreur.jsp";
+				}
+			} else if (EDITER_STAGE.equals(actionName)){
+				try{
+					Stage unStage = new Stage();
+					unStage.setId(request.getParameter("id"));
+					unStage.setLibelle(request.getParameter("libelle"));
+					unStage.setDatedebut(conversionChaineenDate(request.getParameter("datedebut"), "dd/MM/yyyy"));
+					unStage.setDatefin(conversionChaineenDate(request.getParameter("datefin"), "dd/MM/yyyy"));
+					unStage.setNbplaces(Integer.parseInt(request.getParameter("nbplaces")));
+					unStage.setNbinscrits(Integer.parseInt(request.getParameter("nbinscrits")));
+					unStage.editionStage();
+					destinationPage = "/index.jsp";					
+				} catch (MonException e){
+					request.setAttribute("MesErreurs", e.getMessage());
+					destinationPage = "/Erreur.jsp";
+				}				
 			} else if (SUPPRIMER_STAGE.equals(actionName)){
 				try {
 					Stage unStage = new Stage();

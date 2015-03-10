@@ -74,7 +74,7 @@
 			<td>${item.nbinscrits}</td>
 			
 			<td>
-				<span class="glyphicon glyphicon-edit" aria-hidden="true"></span>
+				<a href="Controleur?action=modifierStage&id=${item.id}"><span class="glyphicon glyphicon-edit" aria-hidden="true"></span></a>
 				&nbsp;&nbsp;&nbsp;&nbsp;
 				<a href="Controleur?action=supprimerStage&id=${item.id}"><span class="glyphicon glyphicon-remove" aria-hidden="true"></span></a>
 			</td>
