@@ -1,5 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=ISO-8859-1"
     pageEncoding="ISO-8859-1"%>
+<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
+    
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>
@@ -78,7 +80,7 @@
 <div class="control-group">
   <label class="control-label" for="id">Numéro</label>
   <div class="controls">
-    <input id="id" name="id" placeholder="" class="input-medium" required="" type="text" value="${stage.id}" required  readonly pattern="\d+">
+    <input id="id" name="id" placeholder="" class="input-medium" required="" type="text" value="${stage.id}" required  disabled pattern="\d+">
   </div>
 </div>
 
@@ -94,7 +96,8 @@
 <div class="control-group">
   <label class="control-label" for="datedebut">Date de début</label>
   <div class="controls">
-    <input id="datedebut" name="datedebut" placeholder="JJ/MM/AAAA" class="input-medium" type="text" value="${stage.datedebut}" required pattern="\d{1,2}/\d{1,2}/\d{4}">
+   	<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${stage.datedebut}" pattern="dd/MM/yyyy" var="datedebut"/>
+    <input id="datedebut" name="datedebut" placeholder="JJ/MM/AAAA" class="input-medium" type="text" value="${datedebut}" required pattern="\d{1,2}/\d{1,2}/\d{4}">
   </div>
 </div>
 
@@ -102,7 +105,8 @@
 <div class="control-group">
   <label class="control-label" for="datefin">Date de fin</label>
   <div class="controls">
-    <input id="datefin" name="datefin" placeholder="JJ/MM/AAAA" class="input-medium" type="text" value="${stage.datefin}" required pattern="\d{1,2}/\d{1,2}/\d{4}">
+   	<fmt:formatDate type="both" dateStyle="short" timeStyle="short" value="${stage.datefin}" pattern="dd/MM/yyyy" var="datefin"/>
+    <input id="datefin" name="datefin" placeholder="JJ/MM/AAAA" class="input-medium" type="text" value="${datefin}" required pattern="\d{1,2}/\d{1,2}/\d{4}">
   </div>
 </div>
 
