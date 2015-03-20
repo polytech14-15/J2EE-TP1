@@ -80,7 +80,7 @@
 <div class="control-group">
   <label class="control-label" for="id">Numéro</label>
   <div class="controls">
-    <input id="id" name="id" placeholder="" class="input-medium" required="" type="text" value="${stage.id}" required  disabled pattern="\d+">
+    <input id="id" name="id" placeholder="" class="input-medium" required="" type="text" value="${stage.id}" required  reaedonly pattern="\d+">
   </div>
 </div>
 
